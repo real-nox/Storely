@@ -1,0 +1,89 @@
+.Header {
+    min-height: 10vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.Header a {
+    text-decoration: none;
+}
+
+
+.Header .Top {
+    text-align: center;
+    padding: 0.5rem;
+    background-color: black;
+    color: white;
+}
+
+.Header .Elements {
+    padding: 1rem 0rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    place-items: center;
+}
+
+.Header .Elements .Left,
+.Header .Elements .Center,
+.Header .Elements .Right {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Header .Elements .Left {
+    color: black;
+    font-size: 20px;
+}
+
+.Header .Elements .Center {
+    gap: 5rem;
+}
+
+.Header .Elements .Center a {
+    color: rgb(100, 100, 100);
+    font-size: 16px;
+}
+
+.Header .Elements .Right {
+    gap: 1rem;
+}
+
+.Right .Others {
+    display: flex;
+    width: 15%;
+    justify-content: space-around;
+}
+
+.SearchBar label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.8px solid black;
+    border-radius: 5px;
+    padding: 0.1rem;
+    width: 13rem;
+}
+
+.SearchBar label input {
+    border: 0;
+}
+
+.SearchBar label input:focus {
+    border: 0;
+    outline: none;
+}
+
+.SearchBar label svg {
+    cursor: pointer;
+}
+
+.Header::after {
+    content: " ";
+    background-color: rgba(184, 184, 184, 0.63);
+    width: 100%;
+    height: 0.1rem;
+}
