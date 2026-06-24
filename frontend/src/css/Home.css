@@ -1,61 +1,76 @@
-.Header {
-    min-height: 10vh;
+.home {
+    height: 100vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+.Header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 .Header a {
     text-decoration: none;
 }
 
-
-.Header .Top {
-    text-align: center;
-    padding: 0.5rem;
-    background-color: black;
-    color: white;
-}
-
 .Header .Elements {
     padding: 1rem 0rem;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 1fr;
     place-items: center;
+    height: 5vh;
 }
 
 .Header .Elements .Left,
-.Header .Elements .Center,
 .Header .Elements .Right {
     width: 100%;
     height: 100%;
+    font-size: 18px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.Header .Elements .Left {
-    color: black;
-    font-size: 20px;
-}
-
-.Header .Elements .Center {
-    gap: 5rem;
-}
-
-.Header .Elements .Center a {
-    color: rgb(100, 100, 100);
-    font-size: 16px;
+.Header .Elements .Left a {
+    color: rgb(13, 148, 114);
+    font-size: 25px;
+    font-weight: bold;
 }
 
 .Header .Elements .Right {
-    gap: 1rem;
+    gap: 2rem;
 }
 
-.Right .Others {
-    display: flex;
-    width: 15%;
-    justify-content: space-around;
+.Elements .Right .shopbtn,
+.Elements .Right .shoppingcartbtn {
+    color: black;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    background-color: transparent;
+    transition: background-color .5s ease, color .5s ease;
+    font-size: 15px;
+    font-weight: bold;
+    border: 1px solid transparent;
+}
+
+.Elements .Right .shopbtn:hover,
+.Elements .Right .shoppingcartbtn:hover {
+    background-color: rgba(128, 128, 128, 0.137);
+}
+
+.Elements .Right .shopbtn.enabled,
+.Elements .Right .shoppingcartbtn.enabled {
+    border-color: black;
+    background-color: rgb(26, 26, 26);
+    color: white;
+}
+
+.Center {
+    width: 80%;
 }
 
 .SearchBar label {
