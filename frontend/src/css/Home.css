@@ -18,10 +18,7 @@
 
 .Header .Elements {
     padding: 1rem 0rem;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr;
-    place-items: center;
+    display: flex;
     height: 5vh;
 }
 
@@ -31,8 +28,12 @@
     height: 100%;
     font-size: 18px;
     display: flex;
-    justify-content: center;
     align-items: center;
+    padding: 0 5rem;
+}
+
+.Header .Elements .Left {
+    justify-content: start;
 }
 
 .Header .Elements .Left a {
@@ -43,16 +44,24 @@
 
 .Header .Elements .Right {
     gap: 2rem;
+    justify-content: end;
+}
+
+.Elements .Right .shopbtn {
+    padding: 0.7rem 1.2rem;
+}
+
+.Elements .Right .shoppingcartbtn {
+    padding: 0.5rem 1.2rem;
 }
 
 .Elements .Right .shopbtn,
 .Elements .Right .shoppingcartbtn {
     color: black;
-    padding: 0.5rem 1rem;
     border-radius: 5px;
     background-color: transparent;
     transition: background-color .5s ease, color .5s ease;
-    font-size: 15px;
+    font-size: 0.8em;
     font-weight: bold;
     border: 1px solid transparent;
 }
