@@ -162,10 +162,10 @@
 .CategoryContainer {
     padding: 1rem 0;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto;
     grid-gap: 15px;
     overflow: hidden;
+    padding-bottom: 5rem;
 }
 
 .ItemCard {
@@ -174,6 +174,11 @@
     padding: 1rem;
     cursor: pointer;
     background-color: transparent;
+    transition: box-shadow .5s ease;
+}
+
+.ItemCard:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.127);
 }
 
 .ItemCard .icon,
@@ -273,4 +278,28 @@ footer {
     border-radius: 4px;
     border-style: solid;
     border-width: 1px;
+}
+
+@media (width >= 40rem) {
+    .CategoryContainer {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media (width >= 45rem) {
+    .CategoryContainer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (width >= 65rem) {
+    .CategoryContainer {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (width >= 97rem) {
+    .CategoryContainer {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
