@@ -151,3 +151,19 @@
 .CategoryBar .Select {
     text-align: center;
 }
+
+/* Items */
+.CategoryContainer {
+    padding: 1rem 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    grid-gap: 15px;
+}
+
+.ItemCard {
+    padding: 1rem;
+    border-radius: 5px;
+    border: 1px solid hsl(0, 0%, 80%);
+    cursor: pointer;
+}
