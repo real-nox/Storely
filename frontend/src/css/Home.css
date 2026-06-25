@@ -1,5 +1,9 @@
+:root {
+    --short-color : rgb(105, 105, 105);
+}
+
 .home {
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -208,7 +212,7 @@
 
 .descI {
     font-size: 15px;
-    color: rgb(105, 105, 105);
+    color: var(--short-color);
     min-height: 3rem;
 }
 
@@ -241,6 +245,19 @@
 
 .actions .view {
     background-color: transparent;
+}
+
+/* Footer */
+
+footer {
+    border-top: 1px solid hsl(0, 0%, 80%);
+    height: 7vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: var(--short-color);
+    background-color: rgba(238, 238, 238, 0.265);
 }
 
 /* Utils */
