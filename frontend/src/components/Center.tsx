@@ -1,15 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Category from "./Category";
 import Offres from "./Offres";
 import Bar from "./Bar";
 
 export default function Center() {
-    const [category, setCategory] = useState("all")
+    const [category, setCategory] = useState("All")
 
-    useEffect(() => {
-        console.log(category)
-    }, [category])
-    
     return (
         <div className="Center">
             <Offres />

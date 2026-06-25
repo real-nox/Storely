@@ -39,7 +39,7 @@ export default function Bar({ setCategory }: SetCategory) {
           defaultValue={choices[0]}
           options={choices}
           onChange={(ev) => {
-            setCategory(ev?.value ?? "all");
+            setCategory(ev?.value ?? "All");
           }}
         />
       </div>
