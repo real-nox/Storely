@@ -120,7 +120,6 @@
     border-style: solid;
     border-width: 1px;
     min-height: 36px;
-    box-shadow: 0 0 1px #2648FF;
     outline: 0 !important;
     gap: 15px;
 }
@@ -146,6 +145,7 @@
 
 .SearchBar label:focus-within {
     border-color: #2648FF;
+    box-shadow: 0 0 1px #2648FF;
 
 }
 .CategoryBar .Select {
