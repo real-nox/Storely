@@ -192,6 +192,7 @@
     align-items: start;
     gap: 10px;
     text-align: start;
+    margin-bottom: 1rem;
 }
 
 .categoryI {
@@ -215,6 +216,31 @@
     color: green;
     font-size: 20px;
     font-weight: bold;
+}
+
+.actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.actions button {
+    padding: 0.25rem 1.25rem;
+    width: auto;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.actions .add {
+    background-color: black;
+    color: white;
+}
+
+.actions .view {
+    background-color: transparent;
 }
 
 /* Utils */

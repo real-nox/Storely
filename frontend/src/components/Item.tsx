@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { products } from "../testItems";
+import { Eye, ShoppingCart } from "lucide-react";
 
 type Category =
   | "Fruits"
@@ -39,6 +40,10 @@ export default function Item({ category_name }: { category_name: string }) {
             <span className="nameI">{name}</span>
             <span className="descI">{description}</span>
             <span className="priceI">{price} MAD</span>
+          </div>
+          <div className="actions">
+            <button className="view border"><Eye /> View</button>
+            <button className="add border"><ShoppingCart /> Add</button>
           </div>
         </button>
         )
