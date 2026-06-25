@@ -8,8 +8,8 @@ interface Opts {
 
 const choices: Opts[] = [
   { value: "all", label: "All Categories" },
-  { value: "fruits", label: "Fruits" },
-  { value: "vege", label: "Vegetable" },
+  { value: "Fruits", label: "Fruits" },
+  { value: "Vegetables", label: "Vegetables" },
 ];
 
 interface SetCategory {
@@ -20,7 +20,7 @@ export default function Bar({ setCategory }: SetCategory) {
   return (
     <div className="Bar">
       <div className="SearchBar">
-        <label htmlFor="search">
+        <label htmlFor="search" className="border">
           <Search />
           <input
             type="search"

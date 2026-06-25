@@ -1,8 +1,19 @@
+import { useEffect } from "react";
 import { products } from "../testItems";
 
-interface Items {
-  category: string;
+type Category =
+  | "Fruits"
+  | "Vegetables"
+  | "Dairy"
+  | "Bakery"
+  | "Seafood"
+  | "Meat";
+
+export interface Items {
+  id: string;
+  category: Category;
   name: string;
+  icon: string;
   description: string;
   qte: number;
   price: number;
@@ -10,18 +21,28 @@ interface Items {
 }
 
 export default function Item({ category_name }: { category_name: string }) {
+  useEffect(() => {
+    console.log(category_name)
+  }, [category_name])
+
   return (
     <>
-      {products.map(
-        ({ category, description, isPromo, name, price, qte }: Items) => (
-          <div className="ItemCard">
-            <p>{category}</p>
-            <h2>{name}</h2>
-            <p>{description}</p>
-            <p>{price}</p>
+      {products.map(({ id, category, description, name, price, icon }: Items) => {
+        console.log(category)
+        return (category_name === "all" || category_name !== "all" && category_name === category) && (
+          <button className="ItemCard border" key={id}>
+          <div className="icon border">
+            <img src={icon} alt="" />
           </div>
-        ),
-      )}
+          <div className="infop">
+            <span className="categoryI border">{category}</span>
+            <span className="nameI">{name}</span>
+            <span className="descI">{description}</span>
+            <span className="priceI">{price} MAD</span>
+          </div>
+        </button>
+        )
+      })}
     </>
   );
 }
