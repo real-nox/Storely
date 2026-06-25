@@ -1,15 +1,20 @@
 import { Search } from "lucide-react";
 import Select from "react-select";
+import type { Category } from "./Item";
 
 interface Opts {
-  value: string;
+  value: Category;
   label: string;
 }
 
 const choices: Opts[] = [
-  { value: "all", label: "All Categories" },
-  { value: "Fruits", label: "Fruits" },
+  { value: "All", label: "All Categories" },
+  { value: "Bakery", label: "Fruits" },
   { value: "Vegetables", label: "Vegetables" },
+  { value: "Fruits", label: "Fruits" },
+  { value: "Dairy", label: "Dairy" },
+  { value: "Meat", label: "Meat" },
+  { value: "Seafood", label: "Seafood" },
 ];
 
 interface SetCategory {

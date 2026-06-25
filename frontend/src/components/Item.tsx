@@ -2,7 +2,8 @@ import { useEffect } from "react";
 import { products } from "../testItems";
 import { Eye, ShoppingCart } from "lucide-react";
 
-type Category =
+export type Category =
+  | "All"
   | "Fruits"
   | "Vegetables"
   | "Dairy"
@@ -30,7 +31,7 @@ export default function Item({ category_name }: { category_name: string }) {
     <>
       {products.map(({ id, category, description, name, price, icon }: Items) => {
         console.log(category)
-        return (category_name === "all" || category_name !== "all" && category_name === category) && (
+        return (category_name === "All" || category_name !== "All" && category_name === category) && (
           <button className="ItemCard border" key={id}>
           <div className="icon border">
             <img src={icon} alt="" />
