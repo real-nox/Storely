@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router";
 import { products } from "../testItems";
 import { ArrowLeft, Minus, Plus, ShoppingCart } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Iteminfo() {
   const { id } = useParams();
@@ -9,7 +9,9 @@ export default function Iteminfo() {
 
   const product = products.find((p) => p.id === id);
 
-  if (!product) navigate("/404");
+  useEffect(() => {
+    if (!product) navigate("/404");
+  }, []);
 
   const [qte, setQte] = useState(0);
   return (
