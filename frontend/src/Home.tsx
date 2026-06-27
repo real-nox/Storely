@@ -5,10 +5,11 @@ import Footer from "./components/Footer";
 
 import Home from "./pages/Homepage";
 import Iteminfo from "./pages/Itempage";
+import NotFound from "./pages/NotFound";
 
 import "./css/Home.css";
 import "./css/Item.css";
-import NotFound from "./pages/NotFound";
+import "./css/Notfound.css";
 
 type Type = "home" | "item" | "cart" | "admin" | "notfound";
 

@@ -1,0 +1,20 @@
+.notfound {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.notfound h1 {
+    font-size: 10em;
+    color: rgb(165, 165, 165);
+}
+
+.notfound h4 {
+    font-size: 1.5em;
+}
+
+.notfound span {
+    color: gray;
+}
