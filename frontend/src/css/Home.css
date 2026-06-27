@@ -1,5 +1,5 @@
 :root {
-    --short-color : rgb(105, 105, 105);
+    --short-color: rgb(105, 105, 105);
 }
 
 .home {
@@ -94,11 +94,13 @@
 
 .Center {
     width: 80%;
+    min-height: 84dvh;
 }
 
 .Center .OffresContainer {
     height: 35vh;
     padding: 1.5rem 0;
+    width: 100%;
 }
 
 .OffresContainer .BlankOffer {
@@ -154,6 +156,7 @@
     box-shadow: 0 0 1px #2648FF;
 
 }
+
 .CategoryBar .Select {
     text-align: center;
 }
@@ -280,25 +283,25 @@ footer {
     border-width: 1px;
 }
 
-@media (width >= 40rem) {
+@media (width >=40rem) {
     .CategoryContainer {
         grid-template-columns: repeat(1, 1fr);
     }
 }
 
-@media (width >= 45rem) {
+@media (width >=45rem) {
     .CategoryContainer {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (width >= 65rem) {
+@media (width >=65rem) {
     .CategoryContainer {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
-@media (width >= 97rem) {
+@media (width >=97rem) {
     .CategoryContainer {
         grid-template-columns: repeat(4, 1fr);
     }

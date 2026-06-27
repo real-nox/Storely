@@ -8,7 +8,7 @@ export const products: Items[] = [
     price: 4.99,
     icon: "https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=400",
     description: "Crisp and sweet organic apples, perfect for snacking or baking.",
-    qte: 150,
+    qte: 25,
     isPromo: false
   },
   {

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { products } from "../testItems";
 import { Eye, ShoppingCart } from "lucide-react";
+import { useNavigate } from "react-router";
 
 export type Category =
   | "All"
@@ -30,13 +31,16 @@ export default function Item({
   filter: string;
 }) {
   const [filteredItems, setFilteredItems] = useState(products);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(filter)
-    setFilteredItems(products.filter((item) => item.name.toLowerCase().includes(filter.toLowerCase())));
+    setFilteredItems(
+      products.filter((item) =>
+        item.name.toLowerCase().includes(filter.toLowerCase()),
+      ),
+    );
   }, [filter]);
 
-  console.log(filteredItems);
   return (
     <>
       {filteredItems.map(
@@ -44,7 +48,11 @@ export default function Item({
           return (
             (category_name === "All" ||
               (category_name !== "All" && category_name === category)) && (
-              <div className="ItemCard border" key={id}>
+              <div
+                className="ItemCard border"
+                key={id}
+                onClick={() => navigate(`/${id}`)}
+              >
                 <div className="icon border">
                   <img src={icon} alt="" />
                 </div>
@@ -55,7 +63,12 @@ export default function Item({
                   <span className="priceI">{price} MAD</span>
                 </div>
                 <div className="actions">
-                  <button className="view border">
+                  <button
+                    className="view border"
+                    onClick={() =>
+                      navigate(`/${id}`)
+                    }
+                  >
                     <Eye /> View
                   </button>
                   <button className="add border">

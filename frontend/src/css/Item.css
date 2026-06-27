@@ -1,0 +1,82 @@
+.item.Center {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 0;
+    gap: 1.5rem;
+}
+
+.item .top button {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border: 0;
+    background-color: transparent;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.item .info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+}
+
+.info .left {
+    display: flex;
+    flex-direction: column;
+}
+
+.info .right {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.info .right .infop {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.info .right .infop .categoryI {
+    width: 9%;
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+.right .infop .nameI,
+.right .infop .priceI {
+    font-size: 35px;
+}
+
+.infop .qte {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.infop .qte svg {
+    width: 2rem;
+    height: 2rem;
+    color: rgb(80, 80, 80);
+    cursor: pointer;
+}
+
+.infop .qte input {
+    height: 2rem;
+    width: 15%;
+    text-align: center;
+    padding: 0;
+    color: rgb(80, 80, 80);
+    font-size: 15px;
+}
+
+.right .actions button {
+    width: 50%;
+    height: 4vh;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}

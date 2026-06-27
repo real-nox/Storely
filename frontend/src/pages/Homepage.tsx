@@ -1,15 +1,17 @@
-import "../css/Home.css"
+import { useState } from "react";
+import Offres from "../components/Offres";
+import Bar from "../components/Bar";
+import Category from "../components/Category";
 
-import Header from "../components/Header";
-import Center from "../components/Center";
-import Footer from "../components/Footer";
+export default function Home() {
+  const [category, setCategory] = useState("All");
+  const [filter, setFilter] = useState("");
 
-export default function Homepage() {
-    return (
-        <div className="home">
-            <Header />
-            <Center />
-            <Footer />
-        </div>
-    )
+  return (
+    <div className="home Center">
+      <Offres />
+      <Bar setCategory={setCategory} setFilter={setFilter} filter={filter} />
+      <Category category_name={category} filter={filter} />
+    </div>
+  );
 }

@@ -1,10 +1,16 @@
 import { ShoppingCart } from "lucide-react";
-import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
-export default function Header() {
-  const [inCart, setinCart] = useState(0);
+type SetinCart = (setinCart: number) => void;
 
+export default function Header({
+  setinCart,
+  inCart,
+}: {
+  setinCart: SetinCart;
+  inCart: number;
+}) {
+  const navigate = useNavigate();
   return (
     <div className="Header">
       <div className="Elements">
@@ -13,15 +19,21 @@ export default function Header() {
         </div>
         <div className="Right">
           <Link
-            onClick={() => setinCart(0)}
-            className={`shopbtn ${inCart === 0 ? "enabled" : ""}`}
+            onClick={() => {
+              setinCart(1);
+              navigate("/");
+            }}
+            className={`shopbtn ${inCart === 1 ? "enabled" : ""}`}
             to={"/"}
           >
             Shop
           </Link>
           <ShoppingCart
-            onClick={() => setinCart(1)}
-            className={`shoppingcartbtn ${inCart === 1 ? "enabled" : ""}`}
+            onClick={() => {
+              setinCart(2);
+              navigate("/cart");
+            }}
+            className={`shoppingcartbtn ${inCart === 2 ? "enabled" : ""}`}
           />
         </div>
       </div>
