@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 import "./css/App.css";
 
 //Pages
@@ -9,10 +9,11 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Homepage Type={"home"} />} />
-          <Route path="/:id" element={<Homepage Type={"item"} />} />
+          <Route path="/" element={<Homepage Type="home" />} />
+          <Route path="/:id" element={<Homepage Type="item" />} />
 
-          <Route path="*" />
+          <Route path="*" element={<Navigate to="/404" replace />} />
+          <Route path="404" element={<Homepage Type="notfound" />} />
         </Routes>
       </BrowserRouter>
     </>

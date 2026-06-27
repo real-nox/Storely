@@ -9,6 +9,8 @@ export default function Iteminfo() {
 
   const product = products.find((p) => p.id === id);
 
+  if (!product) navigate("/404");
+
   const [qte, setQte] = useState(0);
   return (
     <div className="item Center">
@@ -57,7 +59,9 @@ export default function Iteminfo() {
             </div>
           </div>
           <div className="actions">
-            <button className="view border"><ShoppingCart /> Add to Cart</button>
+            <button className="view border">
+              <ShoppingCart /> Add to Cart
+            </button>
             <button className="add border">Buy Now</button>
           </div>
         </div>
