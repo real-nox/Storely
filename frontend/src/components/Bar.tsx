@@ -21,7 +21,19 @@ interface SetCategory {
   setCategory: (category: string) => void;
 }
 
-export default function Bar({ setCategory }: SetCategory) {
+interface SetFilter {
+  setFilter: (filter: string) => void;
+}
+
+export default function Bar({
+  setCategory,
+  setFilter,
+  filter,
+}: {
+  setCategory: SetCategory;
+  setFilter: SetFilter;
+  filter: string;
+}) {
   return (
     <div className="Bar">
       <div className="SearchBar">
