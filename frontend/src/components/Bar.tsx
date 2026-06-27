@@ -17,13 +17,9 @@ const choices: Opts[] = [
   { value: "Seafood", label: "Seafood" },
 ];
 
-interface SetCategory {
-  setCategory: (category: string) => void;
-}
+type SetCategory = (category: string) => void;
 
-interface SetFilter {
-  setFilter: (filter: string) => void;
-}
+type SetFilter = (filter: string) => void;
 
 export default function Bar({
   setCategory,
@@ -40,9 +36,11 @@ export default function Bar({
         <label htmlFor="search" className="border">
           <Search />
           <input
+            value={filter}
             type="search"
             id="search"
             placeholder="Search for product..."
+            onChange={(ev) => setFilter(ev.target.value)}
           />
         </label>
       </div>

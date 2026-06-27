@@ -9,7 +9,7 @@ export default function Category({
 }) {
   return (
     <div className={`CategoryContainer ${category_name}`}>
-      <Item category_name={category_name} />
+      <Item category_name={category_name} filter={filter} />
     </div>
   );
 }
