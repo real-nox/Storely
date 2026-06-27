@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { products } from "../testItems";
 import { Eye, ShoppingCart } from "lucide-react";
 import { useNavigate } from "react-router";
+import type { SetCartItem } from "../Home";
 
 export type Category =
   | "All"
@@ -26,9 +27,11 @@ export interface Items {
 export default function Item({
   category_name,
   filter,
+  setCartItem,
 }: {
   category_name: string;
   filter: string;
+  setCartItem: SetCartItem;
 }) {
   const [filteredItems, setFilteredItems] = useState(products);
   const navigate = useNavigate();
@@ -65,13 +68,20 @@ export default function Item({
                 <div className="actions">
                   <button
                     className="view border"
-                    onClick={() =>
-                      navigate(`/${id}`)
-                    }
+                    onClick={() => navigate(`/${id}`)}
                   >
                     <Eye /> View
                   </button>
-                  <button className="add border">
+                  <button
+                    className="add border"
+                    onClick={(ev) => {
+                      ev.stopPropagation();
+                      setCartItem((prev: { id_products: number[] }) => ({
+                        ...prev,
+                        id_products: [...prev.id_products, parseInt(id)],
+                      }));
+                    }}
+                  >
                     <ShoppingCart /> Add
                   </button>
                 </div>

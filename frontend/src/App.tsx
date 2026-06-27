@@ -11,6 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage Type="home" />} />
           <Route path="/:id" element={<Homepage Type="item" />} />
+          <Route path="/cart" element={<Homepage Type="item" />} />
 
           <Route path="*" element={<Navigate to="/404" replace />} />
           <Route path="404" element={<Homepage Type="notfound" />} />
