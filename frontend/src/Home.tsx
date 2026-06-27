@@ -10,11 +10,12 @@ import NotFound from "./pages/NotFound";
 import "./css/Home.css";
 import "./css/Item.css";
 import "./css/Notfound.css";
+import Cart from "./pages/Cartpage";
 
 type Type = "home" | "item" | "cart" | "admin" | "notfound";
 
 export type CartItem = {
-  id_products: number[];
+  id_products: { id: number; qte: number }[];
 };
 
 export type SetCartItem = Dispatch<SetStateAction<CartItem>>;
@@ -31,22 +32,21 @@ export default function Homepage({ Type }: { Type: Type }) {
   }, [cartItems]);
 
   useEffect(() => {
-    ((Type === "item" ||
-      Type === "admin" ||
-      Type === "cart" ||
-      Type === "notfound") &&
+    ((Type === "item" || Type === "admin" || Type === "notfound") &&
       setinCart(0)) ||
-      (Type === "home" && setinCart(1));
+      (Type === "home" && setinCart(1)) ||
+      (Type === "cart" && setinCart(2));
   }, [Type]);
 
   const renderPage = () => {
     if (Type === "home") return <Home setCartItem={setCartItem} />;
-    if (Type === "item") return <Iteminfo />;
+    if (Type === "cart") return <Cart />;
+    if (Type === "item") return <Iteminfo setCartItem={setCartItem} />;
     if (Type === "notfound") return <NotFound />;
   };
   return (
     <div className="home">
-      <Header inCart={inCart} setinCart={setinCart} />
+      <Header inCart={inCart} setinCart={setinCart} cartItems={cartItems} />
       {renderPage()}
       <Footer />
     </div>

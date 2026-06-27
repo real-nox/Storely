@@ -2,8 +2,13 @@ import { useNavigate, useParams } from "react-router";
 import { products } from "../testItems";
 import { ArrowLeft, Minus, Plus, ShoppingCart } from "lucide-react";
 import { useEffect, useState } from "react";
+import type { CartItem, SetCartItem } from "../Home";
 
-export default function Iteminfo() {
+export default function Iteminfo({
+  setCartItem,
+}: {
+  setCartItem: SetCartItem;
+}) {
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -13,7 +18,7 @@ export default function Iteminfo() {
     if (!product) navigate("/404");
   }, []);
 
-  const [qte, setQte] = useState(0);
+  const [qte, setQte] = useState(1);
   return (
     <div className="item Center">
       <div className="top">
@@ -45,7 +50,7 @@ export default function Iteminfo() {
               <input
                 type="number"
                 max={product?.qte}
-                min={0}
+                min={1}
                 onChange={(ev) => setQte(parseInt(ev.target.value))}
                 value={qte}
                 disabled
@@ -61,7 +66,35 @@ export default function Iteminfo() {
             </div>
           </div>
           <div className="actions">
-            <button className="view border">
+            <button
+              className="view border"
+              onClick={(ev) => {
+                ev.stopPropagation();
+                setCartItem((prev: CartItem) => {
+                  if (!product?.id) return prev
+                  const numericId = parseInt(product?.id);
+                  const current = prev.id_products.find(
+                    (item) => item.id === numericId,
+                  );
+                  console.log(qte)
+
+                  if (current)
+                    return {
+                      ...prev,
+                      id_products: [
+                        ...prev.id_products.map((item) =>
+                          item.id === numericId ? { ...item, qte : item.qte + qte } : item,
+                        ),
+                      ],
+                    };
+
+                  return {
+                    ...prev,
+                    id_products: [...prev.id_products, { id: numericId, qte}],
+                  };
+                });
+              }}
+            >
               <ShoppingCart /> Add to Cart
             </button>
             <button className="add border">Buy Now</button>

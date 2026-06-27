@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { products } from "../testItems";
 import { Eye, ShoppingCart } from "lucide-react";
 import { useNavigate } from "react-router";
-import type { SetCartItem } from "../Home";
+import type { CartItem, SetCartItem } from "../Home";
 
 export type Category =
   | "All"
@@ -76,10 +76,29 @@ export default function Item({
                     className="add border"
                     onClick={(ev) => {
                       ev.stopPropagation();
-                      setCartItem((prev: { id_products: number[] }) => ({
-                        ...prev,
-                        id_products: [...prev.id_products, parseInt(id)],
-                      }));
+                      setCartItem((prev: CartItem) => {
+                        const numericId = parseInt(id)
+                        const current = prev.id_products.find(
+                          (item) => item.id === numericId,
+                        );
+
+                        if (current)
+                          return {
+                            ...prev,
+                            id_products: prev.id_products.map((item) =>
+                              item.id === numericId
+                                ? { ...item, qte: item.qte + 1 }
+                                : item,
+                            ),
+                          };
+                        return {
+                          ...prev,
+                          id_products: [
+                            ...prev.id_products,
+                            { id: numericId, qte: 1 },
+                          ],
+                        };
+                      });
                     }}
                   >
                     <ShoppingCart /> Add
