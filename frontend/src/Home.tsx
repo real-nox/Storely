@@ -28,7 +28,13 @@ export default function Homepage({ Type }: { Type: Type }) {
   });
 
   useEffect(() => {
-    //window.localStorage.setItem("products_inCart", String(cartItems));
+    const stored = localStorage.getItem("products_inCart");
+    if (stored) setCartItem(JSON.parse(stored));
+  }, []);
+
+  useEffect(() => {
+    console.log(cartItems.id_products);
+    localStorage.setItem("products_inCart", JSON.stringify(cartItems));
   }, [cartItems]);
 
   useEffect(() => {
@@ -40,7 +46,8 @@ export default function Homepage({ Type }: { Type: Type }) {
 
   const renderPage = () => {
     if (Type === "home") return <Home setCartItem={setCartItem} />;
-    if (Type === "cart") return <Cart cartItems={cartItems} setCartItem={setCartItem} />;
+    if (Type === "cart")
+      return <Cart cartItems={cartItems} setCartItem={setCartItem} />;
     if (Type === "item") return <Iteminfo setCartItem={setCartItem} />;
     if (Type === "notfound") return <NotFound />;
   };
