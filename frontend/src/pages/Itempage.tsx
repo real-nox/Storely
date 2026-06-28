@@ -76,7 +76,6 @@ export default function Iteminfo({
                   const current = prev.id_products.find(
                     (item) => item.id === numericId,
                   );
-                  console.log(qte)
 
                   if (current)
                     return {

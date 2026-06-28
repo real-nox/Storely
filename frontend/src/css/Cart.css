@@ -1,0 +1,77 @@
+.cartP.Empty {
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cartP {
+    gap: 10px;
+}
+
+.cartP.Empty svg {
+    height: 10%;
+    width: 10%;
+    color: rgb(189, 189, 189);
+}
+
+.cartP.Empty button {
+    margin-top: 0.8rem;
+    padding: 0.5rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.cartP .list {
+    display: flex;
+    flex-direction: column;
+}
+
+.cartP .list {
+    padding: 1rem 0;
+    display: grid;
+    grid-template-columns: 1fr 0.5fr;
+}
+
+.cartP .list .leftList {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 1fr;
+    gap: 1rem;
+}
+
+.leftList .ItemCard {
+    height: 7rem;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.leftList .ItemCard .icon {
+    height: 100%;
+    width: 10rem;
+}
+
+.leftList .ItemCard .infop {
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.leftList .ItemCard .infop div {
+    display: flex;
+    flex-direction: column;
+}
+
+.leftList .ItemCard .infop div .qte {
+    display: flex;
+    flex-direction: row;
+}
+
+.leftList .ItemCard .infop .right{
+    justify-content: end;
+    height: 100%;
+}
+
+.leftList .ItemCard .infop .right .descI {
+    min-height: 0;
+}

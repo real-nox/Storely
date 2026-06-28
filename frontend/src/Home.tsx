@@ -4,13 +4,14 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 import Home from "./pages/Homepage";
+import Cart from "./pages/Cartpage";
 import Iteminfo from "./pages/Itempage";
 import NotFound from "./pages/NotFound";
 
+import "./css/Notfound.css";
+import "./css/Cart.css";
 import "./css/Home.css";
 import "./css/Item.css";
-import "./css/Notfound.css";
-import Cart from "./pages/Cartpage";
 
 type Type = "home" | "item" | "cart" | "admin" | "notfound";
 
@@ -40,7 +41,7 @@ export default function Homepage({ Type }: { Type: Type }) {
 
   const renderPage = () => {
     if (Type === "home") return <Home setCartItem={setCartItem} />;
-    if (Type === "cart") return <Cart />;
+    if (Type === "cart") return <Cart cartItems={cartItems} setCartItem={setCartItem} />;
     if (Type === "item") return <Iteminfo setCartItem={setCartItem} />;
     if (Type === "notfound") return <NotFound />;
   };
