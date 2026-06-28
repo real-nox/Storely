@@ -1,4 +1,4 @@
-import { Minus, Plus, ShoppingBag } from "lucide-react";
+import { Minus, Plus, ShoppingBag, Trash2 } from "lucide-react";
 import type { CartItem, SetCartItem } from "../Home";
 import { useNavigate } from "react-router";
 import { products } from "../testItems";
@@ -86,8 +86,21 @@ export default function Cart({
                           </div>
                         </div>
                         <div className="right">
-                          <span className="priceI">{price * qte} MAD</span>
-                          <span className="descI">{price} MAD Per item</span>
+                          <div className="top">
+                            <Trash2
+                              style={{ color: "red", width: "80%" }}
+                              onClick={() => {
+                                setCartItem((prev) => ({
+                                  ...prev,
+                                  id_products: prev.id_products.filter(i => i.id !== parseInt(id))
+                                }));
+                              }}
+                            />
+                          </div>
+                          <div className="bottom">
+                            <span className="priceI">{price * qte} MAD</span>
+                            <span className="descI">{price} MAD Per item</span>
+                          </div>
                         </div>
                       </div>
                       <div className="actions"></div>

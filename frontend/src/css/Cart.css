@@ -68,7 +68,8 @@
 }
 
 .leftList .ItemCard .infop .right{
-    justify-content: end;
+    justify-content: space-between;
+    align-items: end;
     height: 100%;
 }
 
