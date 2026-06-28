@@ -15,6 +15,9 @@ export default function Cart({
 
   if (!cartItems) return null;
 
+  let sum: number = 0;
+  let shipping = 10.0;
+
   const cartProducts = cartItems.id_products
     .map((item) => {
       const product = products.find((p) => parseInt(p.id) === item.id);
@@ -43,6 +46,8 @@ export default function Cart({
               {cartProducts.map(
                 ({ id, description, icon, name, price, qte, max }) => {
                   const numericId = parseInt(id);
+
+                  sum += qte * price;
 
                   const handleQte = (quantity: number): void => {
                     const next = qte + quantity;
@@ -92,24 +97,55 @@ export default function Cart({
                               onClick={() => {
                                 setCartItem((prev) => ({
                                   ...prev,
-                                  id_products: prev.id_products.filter(i => i.id !== parseInt(id))
+                                  id_products: prev.id_products.filter(
+                                    (i) => i.id !== parseInt(id),
+                                  ),
                                 }));
                               }}
                             />
                           </div>
                           <div className="bottom">
-                            <span className="priceI">{price * qte} MAD</span>
+                            <span className="priceI">
+                              {(price * qte).toFixed(2)} MAD
+                            </span>
                             <span className="descI">{price} MAD Per item</span>
                           </div>
                         </div>
                       </div>
-                      <div className="actions"></div>
                     </div>
                   );
                 },
               )}
             </div>
-            <div className="rightList"></div>
+            <div className="rightList">
+              <div className="summary border">
+                <div className="top">
+                  <h3>Order Summary</h3>
+                  <p>
+                    <span>TTC</span>
+                    <span>{sum.toFixed(2)}DH</span>
+                  </p>
+                  <p className="shipping">
+                    <span>Shipping </span>
+                    <span>{shipping}DH</span>
+                  </p>
+                </div>
+                <div className="bottom">
+                  <p className="total priceI">
+                    Total :{" "}
+                    <span className="priceI">
+                      {(sum + shipping).toFixed(2)}DH
+                    </span>
+                  </p>
+                  <button onClick={() => navigate("/checkout")}
+                    className="add border"
+                  >
+                    Proceed to Checkout
+                  </button>
+                  <button onClick={() => navigate("/")}>Continue Shopping</button>
+                </div>
+              </div>
+            </div>
           </div>
         </>
       )}

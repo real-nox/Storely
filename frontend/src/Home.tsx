@@ -29,7 +29,6 @@ export default function Homepage({ Type }: { Type: Type }) {
 
   useEffect(() => {
     //window.localStorage.setItem("products_inCart", String(cartItems));
-    console.log(cartItems);
   }, [cartItems]);
 
   useEffect(() => {

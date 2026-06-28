@@ -1,11 +1,11 @@
 .cartP.Empty {
-    padding: 2rem 0;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .cartP {
+    padding: 2rem 0;
     gap: 10px;
 }
 
@@ -32,6 +32,7 @@
     padding: 1rem 0;
     display: grid;
     grid-template-columns: 1fr 0.5fr;
+    gap: 10px;
 }
 
 .cartP .list .leftList {
@@ -45,6 +46,7 @@
     height: 7rem;
     flex-direction: row;
     gap: 1rem;
+    border-radius: 15px;
 }
 
 .leftList .ItemCard .icon {
@@ -67,7 +69,7 @@
     flex-direction: row;
 }
 
-.leftList .ItemCard .infop .right{
+.leftList .ItemCard .infop .right {
     justify-content: space-between;
     align-items: end;
     height: 100%;
@@ -75,4 +77,65 @@
 
 .leftList .ItemCard .infop .right .descI {
     min-height: 0;
+}
+
+.leftList .ItemCard .infop .right .bottom {
+    text-align: end;
+}
+
+.rightList {
+    height: 10rem;
+}
+
+.rightList .summary {
+    height: auto;
+    border-radius: 15px;
+    padding: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.summary:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.127);
+}
+
+.summary .top {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.summary .top::after {
+    content: " ";
+    display: flex;
+    background-color: hsl(0, 0%, 80%);
+    margin: 1rem 0;
+    height: 2px;
+    width: 100%;
+}
+
+.summary .top p {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+}
+
+.summary .top p span:last-child {
+    color: green;
+}
+
+.rightList .summary .total {
+    color: black;
+}
+
+.rightList .summary .bottom button {
+    font-size: 1em;
+    width: 100%;
+    height: 2rem;
+    margin-top: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
 }
