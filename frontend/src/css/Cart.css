@@ -26,7 +26,7 @@
 .cartP .list {
     display: flex;
     padding: 1rem 0;
-    gap: 10px;
+    gap: 35px;
 }
 
 .cartP .list .leftList {
@@ -40,7 +40,6 @@
     height: 7rem;
     flex-direction: row;
     gap: 1rem;
-    border-radius: 15px;
 }
 
 .leftList .ItemCard .icon {
@@ -84,7 +83,6 @@
 
 .rightList .summary {
     height: auto;
-    border-radius: 15px;
     padding: 1rem;
 
     display: flex;
@@ -133,6 +131,10 @@
     margin-top: 1rem;
     border-radius: 8px;
     cursor: pointer;
+}
+
+.list .border {
+    border-radius: 15px;
 }
 
 @media (width < 70rem) {

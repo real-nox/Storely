@@ -1,0 +1,61 @@
+.cartP .list .leftList.shipping {
+    display: flex;
+    flex-direction: column;
+}
+
+.leftList .info {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.leftList .info .form {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    gap: 10px;
+}
+
+.info .form .infoItem {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5px;
+}
+
+.title {
+    font-size: 1.15em;
+    color: rgb(46, 46, 46);
+}
+
+.info .form .infoItem.first {
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.infoItem.first.shipping {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.info .form .infoItem.first.shipping div {
+    width: 100%;
+}
+
+.info .form .infoItem.first div {
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+    gap: 2.5px;
+}
+
+.info .form .infoItem label {
+    color: rgb(56, 56, 56);
+}
+
+.info .form .infoItem input {
+    padding: 0.5rem;
+    background-color: rgb(244, 244, 244);
+    border-radius: 10px;
+}

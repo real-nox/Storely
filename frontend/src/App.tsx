@@ -12,6 +12,7 @@ function App() {
           <Route path="/" element={<Homepage Type="home" />} />
           <Route path="/:id" element={<Homepage Type="item" />} />
           <Route path="/cart" element={<Homepage Type="cart" />} />
+          <Route path="/checkout" element={<Homepage Type="checkout" />}/>
 
           <Route path="*" element={<Navigate to="/404" replace />} />
           <Route path="404" element={<Homepage Type="notfound" />} />

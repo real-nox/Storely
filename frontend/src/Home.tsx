@@ -7,13 +7,15 @@ import Home from "./pages/Homepage";
 import Cart from "./pages/Cartpage";
 import Iteminfo from "./pages/Itempage";
 import NotFound from "./pages/NotFound";
+import Checkout from "./pages/Checkout";
 
 import "./css/Notfound.css";
+import "./css/Checkout.css";
 import "./css/Cart.css";
 import "./css/Home.css";
 import "./css/Item.css";
 
-type Type = "home" | "item" | "cart" | "admin" | "notfound";
+type Type = "home" | "item" | "cart" | "admin" | "notfound" | "checkout";
 
 export type CartItem = {
   id_products: { id: number; qte: number }[];
@@ -33,12 +35,14 @@ export default function Homepage({ Type }: { Type: Type }) {
   }, []);
 
   useEffect(() => {
-    console.log(cartItems.id_products);
     localStorage.setItem("products_inCart", JSON.stringify(cartItems));
   }, [cartItems]);
 
   useEffect(() => {
-    ((Type === "item" || Type === "admin" || Type === "notfound") &&
+    ((Type === "item" ||
+      Type === "admin" ||
+      Type === "notfound" ||
+      Type === "checkout") &&
       setinCart(0)) ||
       (Type === "home" && setinCart(1)) ||
       (Type === "cart" && setinCart(2));
@@ -50,6 +54,7 @@ export default function Homepage({ Type }: { Type: Type }) {
       return <Cart cartItems={cartItems} setCartItem={setCartItem} />;
     if (Type === "item") return <Iteminfo setCartItem={setCartItem} />;
     if (Type === "notfound") return <NotFound />;
+    if (Type === "checkout") return <Checkout cartItems={cartItems}/>;
   };
   return (
     <div className="home">
