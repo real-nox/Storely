@@ -30,7 +30,6 @@
 }
 
 .cartP .list .leftList {
-    width: 70%;
     display: grid;
     grid-template-columns: 1fr;
     grid-auto-rows: 1fr;
@@ -139,5 +138,19 @@
 @media (width < 70rem) {
     .list {
         flex-direction: column;
+    }
+
+    .leftList {
+        width: 100%;
+    }
+
+    .rightList {
+        width: 100%;
+    }
+}
+
+@media (width >=70rem) {
+    .leftList {
+        width: 70%;
     }
 }
