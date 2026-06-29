@@ -142,7 +142,7 @@ export default function Cart({
                   >
                     Proceed to Checkout
                   </button>
-                  <button onClick={() => navigate("/")}>Continue Shopping</button>
+                  <button onClick={() => navigate("/")} className="view border">Continue Shopping</button>
                 </div>
               </div>
             </div>
