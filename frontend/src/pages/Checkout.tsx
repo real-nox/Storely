@@ -2,9 +2,31 @@ import { useNavigate } from "react-router";
 import type { Items } from "../components/Item";
 import type { CartItem } from "../Home";
 import { products } from "../testItems";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+
+interface InfoUser {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  street: string;
+  city: string;
+  state: string;
+  code: string;
+}
 
 export default function Checkout({ cartItems }: { cartItems: CartItem }) {
+  const [info, setInfo] = useState<InfoUser>({
+    city: "",
+    code: "",
+    email: "",
+    firstName: "",
+    lastName: "",
+    phone: "",
+    state: "",
+    street: "",
+  });
+
   const navigate = useNavigate();
   if (!cartItems) return null;
 
@@ -22,6 +44,26 @@ export default function Checkout({ cartItems }: { cartItems: CartItem }) {
     })
     .filter(Boolean) as (Items & { qte: number; max: number })[];
 
+  const isFilled =
+    !!info.city &&
+    !!info.code &&
+    !!info.email &&
+    !!info.firstName &&
+    !!info.lastName &&
+    !!info.phone &&
+    !!info.state &&
+    !!info.street;
+
+  const fill = (part: keyof InfoUser, info: string) => {
+    setInfo((prev) => ({
+      ...prev,
+      [part]: info,
+    }));
+  };
+
+  const submitCheckout = () => {
+    console.log(info)
+  }
   return (
     <div
       className={`cartP Center ${cartItems.id_products.length === 0 ? "Empty" : ""}`}
@@ -41,6 +83,9 @@ export default function Checkout({ cartItems }: { cartItems: CartItem }) {
                       type="text"
                       name="firstN"
                       id="firstN"
+                      onChange={(ev) =>
+                        fill('firstName', ev.target.value)
+                      }
                     />
                   </div>
                   <div>
@@ -50,6 +95,9 @@ export default function Checkout({ cartItems }: { cartItems: CartItem }) {
                       type="text"
                       name="lastN"
                       id="lastN"
+                      onChange={(ev) =>
+                        fill('lastName', ev.target.value)
+                      }
                     />
                   </div>
                 </div>
@@ -60,6 +108,9 @@ export default function Checkout({ cartItems }: { cartItems: CartItem }) {
                     type="email"
                     name="Email"
                     id="Email"
+                    onChange={(ev) =>
+                        fill('email', ev.target.value)
+                      }
                   />
                 </div>
                 <div className="infoItem">
@@ -69,6 +120,9 @@ export default function Checkout({ cartItems }: { cartItems: CartItem }) {
                     type="text"
                     name="Phone"
                     id="Phone"
+                    onChange={(ev) =>
+                        fill('phone', ev.target.value)
+                      }
                   />
                 </div>
               </div>
@@ -77,12 +131,15 @@ export default function Checkout({ cartItems }: { cartItems: CartItem }) {
               <p className="title">Shipping Adress</p>
               <div className="form">
                 <div className="infoItem">
-                  <label htmlFor="streetA">Street A ddress</label>
+                  <label htmlFor="streetA">Street Address</label>
                   <input
                     className="border"
                     type="text"
                     name="streetA"
                     id="streetA"
+                    onChange={(ev) =>
+                        fill('street', ev.target.value)
+                      }
                   />
                 </div>
                 <div className="infoItem first shipping">
@@ -93,6 +150,9 @@ export default function Checkout({ cartItems }: { cartItems: CartItem }) {
                       type="text"
                       name="City"
                       id="City"
+                      onChange={(ev) =>
+                        fill('city', ev.target.value)
+                      }
                     />
                   </div>
                   <div>
@@ -102,6 +162,9 @@ export default function Checkout({ cartItems }: { cartItems: CartItem }) {
                       type="text"
                       name="State"
                       id="State"
+                      onChange={(ev) =>
+                        fill('state', ev.target.value)
+                      }
                     />
                   </div>
                   <div>
@@ -111,6 +174,9 @@ export default function Checkout({ cartItems }: { cartItems: CartItem }) {
                       type="text"
                       name="code"
                       id="code"
+                      onChange={(ev) =>
+                        fill('code', ev.target.value)
+                      }
                     />
                   </div>
                 </div>
@@ -151,10 +217,7 @@ export default function Checkout({ cartItems }: { cartItems: CartItem }) {
                     {(sum + shipping).toFixed(2)}DH
                   </span>
                 </p>
-                <button
-                  onClick={() => navigate("/checkout")}
-                  className="add border"
-                >
+                <button disabled={!isFilled} onClick={submitCheckout} className="add border">
                   Place order
                 </button>
               </div>
