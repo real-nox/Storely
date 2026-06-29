@@ -1,12 +1,14 @@
 import express from "express";
 import cors from "cors";
 import { config } from "dotenv";
+import clientR from "./routes/client.route.js";
+import adminR from "./routes/admin.route.js";
 
 config({ quiet: true });
 
 const api = express();
 
-const client : string = process.env.CLIENT_ENDPOINT ?? "http://localhost:5173";
+const client: string = process.env.CLIENT_ENDPOINT ?? "http://localhost:5173";
 
 api.use(
   cors({
@@ -14,6 +16,9 @@ api.use(
     credentials: true,
   }),
 );
+
+api.use("/client", clientR);
+api.use("/admin", adminR);
 
 api.listen(5500, () => {
   console.log("[Server] Server is online");
