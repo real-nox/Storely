@@ -14,7 +14,7 @@ export type Category =
 
 export interface Items {
   id: string;
-  category: Category;
+  category: string;
   name: string;
   icon: string;
   description: string;

@@ -17,11 +17,11 @@ export const tryCatch =
   };
 
 export const AsyncFunctions =
-  <T>(f: (args?: T) => Promise<any>) =>
-  async (args?: T) => {
+  <T = void>(f: (args: T) => Promise<unknown>) =>
+  async (args: T) => {
     try {
       return await f(args);
     } catch (error) {
-      console.error(error);
+      throw error;
     }
   };

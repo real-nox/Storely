@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { addProducts } from "../../api/products.api";
 
 interface Items {
   category: string;
@@ -26,7 +27,7 @@ export default function AddP({ onClick }: { onClick: () => void }) {
     }));
   };
 
-  const submitAddP = () => {
+  const submitAddP = async () => {
     if (
       !productInfo?.qte ||
       !productInfo?.category ||
@@ -36,8 +37,10 @@ export default function AddP({ onClick }: { onClick: () => void }) {
       !productInfo?.qte
     )
       return null;
-    console.log(productInfo);
-    //API
+
+    const isAdded = await addProducts(productInfo);
+    if (isAdded) onClick();
+    else alert(isAdded);
   };
 
   return (

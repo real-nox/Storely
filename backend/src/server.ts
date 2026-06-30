@@ -17,6 +17,7 @@ api.use(
     credentials: true,
   }),
 );
+api.use(express.json())
 
 api.use("/client", clientR);
 api.use("/admin", adminR);

@@ -1,6 +1,6 @@
 import { config } from "dotenv";
 import { Pool } from "pg";
-config({quiet:true})
+config({ quiet: true });
 
 const DB_URI = process.env.DB_URI;
 
@@ -12,16 +12,16 @@ const db: Pool = new Pool({
 
 export async function InitDB() {
   try {
-    await db.connect();
+    await db.query("select now()");
     if (db) {
       console.log("[DATABASE] Database connected!");
       return;
     }
   } catch (err) {
-    console.error("[ERROR] ", err);
+    console.error("[DATABASE] connection failed", err);
   }
 }
 
-export const query: Pool["query"] = async (args: any) => db.query(args);
+export const query = ((...args: any[]) => (db.query as any)(...args)) as Pool["query"];
 
 export default db;
