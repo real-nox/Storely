@@ -1,4 +1,6 @@
+import { config } from "dotenv";
 import { Pool } from "pg";
+config({quiet:true})
 
 const DB_URI = process.env.DB_URI;
 
