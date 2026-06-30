@@ -1,0 +1,77 @@
+.Admin {
+    padding: 2rem 0;
+}
+
+.Admin .top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Admin button {
+    font-size: 1.1em;
+    padding: 0.6rem;
+    border-radius: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.action {
+    border: 1px solid rgb(189, 189, 189);
+    padding: 0.25rem;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.action:last-child {
+    color: red;
+}
+
+.products {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.products table thead,
+.products table tbody {
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.products table tr {
+    background-color: transparent;
+    transition: background-color .5s ease;
+}
+
+.products table tr:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.products table tr th {
+    text-align: start;
+    padding: 1rem 0.5rem;
+}
+
+.products table tr td {
+    padding: calc(0.25rem * 2);
+    background-color: transparent;
+}
+
+@property --styleb {
+    syntax: "*";
+    inherits: false;
+    initial-value: solid;
+}
+
+.border-b {
+    border-bottom-style: var(--styleb);
+    border-bottom-width: 1px;
+}

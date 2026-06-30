@@ -14,6 +14,8 @@ import "./css/Checkout.css";
 import "./css/Cart.css";
 import "./css/Home.css";
 import "./css/Item.css";
+import "./css/Admin.css";
+import Adminpage from "./pages/Adminpage";
 
 type Type = "home" | "item" | "cart" | "admin" | "notfound" | "checkout";
 
@@ -54,7 +56,8 @@ export default function Homepage({ Type }: { Type: Type }) {
       return <Cart cartItems={cartItems} setCartItem={setCartItem} />;
     if (Type === "item") return <Iteminfo setCartItem={setCartItem} />;
     if (Type === "notfound") return <NotFound />;
-    if (Type === "checkout") return <Checkout cartItems={cartItems}/>;
+    if (Type === "checkout") return <Checkout cartItems={cartItems} />;
+    if (Type === "admin") return <Adminpage />;
   };
   return (
     <div className="home">

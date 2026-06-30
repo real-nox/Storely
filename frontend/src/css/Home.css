@@ -204,12 +204,12 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.127);
 }
 
-.ItemCard .icon,
+.icon,
 .ItemCard .infop {
     width: 100%;
 }
 
-.ItemCard .icon {
+.icon {
     display: flex;
     justify-content: center;
     align-items: center;
