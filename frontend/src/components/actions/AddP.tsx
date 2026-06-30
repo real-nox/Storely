@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { addProducts } from "../../api/products.api";
+import { addProducts, getProductByName } from "../../api/products.api";
 
 interface Items {
   category: string;
@@ -11,6 +11,7 @@ interface Items {
 }
 
 export default function AddP({ onClick }: { onClick: () => void }) {
+  const [error, setError] = useState("");
   const [productInfo, setProductInfo] = useState<Items>({
     category: "All",
     name: "",
@@ -29,23 +30,35 @@ export default function AddP({ onClick }: { onClick: () => void }) {
 
   const submitAddP = async () => {
     if (
-      !productInfo?.qte ||
+      !productInfo?.name ||
       !productInfo?.category ||
       !productInfo?.description ||
-      !productInfo?.name ||
-      !productInfo?.price ||
-      !productInfo?.qte
+      productInfo?.price == null ||
+      productInfo?.qte == null
     )
       return null;
 
+    const isAlreadyAdded = await getProductByName(productInfo.name);
+
+    if (isAlreadyAdded) return setError(isAlreadyAdded);
+
+    console.log("here")
     const isAdded = await addProducts(productInfo);
-    if (isAdded) onClick();
-    else alert(isAdded);
+    console.log(isAdded);
+    if (isAdded) {
+      setError("");
+      onClick();
+    } else alert(isAdded);
   };
 
   return (
     <div onClick={(ev) => ev.stopPropagation()} className="addC Card border">
       <p className="title">Add New Product</p>
+      {error && (
+        <p style={{ width: "100%", textAlign: "center", color: "red" }}>
+          {error}
+        </p>
+      )}
       <div className="info">
         <div className="form">
           <div className="infoItem">

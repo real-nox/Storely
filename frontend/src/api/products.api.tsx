@@ -25,19 +25,35 @@ export const getProducts = async () => {
   }
 };
 
-export const addProducts = async ( product: Items ) => {
+export const addProducts = async (product: Items) => {
   try {
     const result = await fetch(`${BACKEND_URL}/admin/products`, {
       method: "POST",
       credentials: "include",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({productInfo: product}),
+      body: JSON.stringify({ productInfo: product }),
     });
 
     const response = await result.json();
-    if (response)
-      return true
+    if (response) return true;
     return response?.error;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const getProductByName = async (productName: string) => {
+  try {
+    const result = await fetch(`${BACKEND_URL}/admin/get-product`, {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ productName }),
+    });
+
+    const response = await result.json();
+    if (response.success) return false;
+    return response?.error || "Fill in the form";
   } catch (err) {
     console.error(err);
   }

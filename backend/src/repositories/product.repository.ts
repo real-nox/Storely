@@ -12,7 +12,7 @@ export interface Items {
   isPromo: boolean;
 }
 
-export const getProduct = AsyncFunctions(async () => {
+export const getProducts = AsyncFunctions(async () => {
   const result = await query("select * from product");
 
   if (!result || result?.rows?.length === 0) return null;
@@ -21,7 +21,7 @@ export const getProduct = AsyncFunctions(async () => {
 
 export const addProduct = AsyncFunctions(async (productInfo: Items) => {
   const result = await query(
-    "insert into product (name, category, icon, description, qte, price) values ($1, $2, $3, $4, $5, $6)",
+    "insert into product (name, category, icon, description, qte, price) values ($1, $2, $3, $4, $5, $6) returning *",
     [
       productInfo.name,
       productInfo.category,
@@ -32,6 +32,16 @@ export const addProduct = AsyncFunctions(async (productInfo: Items) => {
     ],
   );
 
-  if (!result || !result?.rowCount) return false
+  if (!result || !result?.rowCount) return false;
+  return true;
+});
+
+export const getProductByName = AsyncFunctions(async (productName: string) => {
+  const result = await query(
+    "select name from product where name = $1",
+    [productName],
+  );
+
+  if (result.rows.length === 0) return false
   return true
 });
