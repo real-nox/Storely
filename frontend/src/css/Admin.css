@@ -75,3 +75,23 @@
     border-bottom-style: var(--styleb);
     border-bottom-width: 1px;
 }
+
+/* Product actions */
+
+.Pagecontainer {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Card {
+    position: fixed;
+    width: 50%;
+    height: 60%;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 1000px black;
+}

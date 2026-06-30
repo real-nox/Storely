@@ -1,12 +1,27 @@
 import { Pen, Plus, Trash2 } from "lucide-react";
 import type { Items } from "../components/Item";
+import type { SetAdminType } from "../Home";
 
-export default function Adminpage({ products }: { products: Items[] }) {
+export default function Adminpage({
+  products,
+  setAdminType,
+  onOpen,
+}: {
+  products: Items[];
+  setAdminType: SetAdminType;
+  onOpen: () => void;
+}) {
   return (
     <div className="Admin Center">
       <div className="top">
         <h1>Admin Panel</h1>
-        <button className="add border">
+        <button
+          className="add border"
+          onClick={() => {
+            onOpen();
+            setAdminType("add");
+          }}
+        >
           <Plus /> Add Product
         </button>
       </div>
@@ -50,8 +65,20 @@ export default function Adminpage({ products }: { products: Items[] }) {
                   <td>{item.qte}</td>
                   <td>
                     <div className="actions">
-                      <Pen className="action" />
-                      <Trash2 className="action" />
+                      <Pen
+                        className="action"
+                        onClick={() => {
+                          onOpen();
+                          setAdminType("modify");
+                        }}
+                      />
+                      <Trash2
+                        className="action"
+                        onClick={() => {
+                          onOpen();
+                          setAdminType("remove");
+                        }}
+                      />
                     </div>
                   </td>
                 </tr>
