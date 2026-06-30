@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { addProducts, getProductByName } from "../../api/products.api";
+import type { SetProduct } from "../../Home";
 
 interface Items {
   category: string;
@@ -10,7 +11,13 @@ interface Items {
   price: number;
 }
 
-export default function AddP({ onClick }: { onClick: () => void }) {
+export default function AddP({
+  onClick,
+  setProduct,
+}: {
+  onClick: () => void;
+  setProduct: SetProduct;
+}) {
   const [error, setError] = useState("");
   const [productInfo, setProductInfo] = useState<Items>({
     category: "All",
@@ -42,12 +49,23 @@ export default function AddP({ onClick }: { onClick: () => void }) {
 
     if (isAlreadyAdded) return setError(isAlreadyAdded);
 
-    console.log("here")
     const isAdded = await addProducts(productInfo);
-    console.log(isAdded);
     if (isAdded) {
       setError("");
       onClick();
+      setProduct((prev) => [
+        ...prev,
+        {
+          id: isAdded.id,
+          category: productInfo.category,
+          description: productInfo.description,
+          icon: productInfo.icon,
+          name: productInfo.name,
+          price: productInfo.price,
+          qte: productInfo.qte,
+          isPromo: false
+        },
+      ]);
     } else alert(isAdded);
   };
 

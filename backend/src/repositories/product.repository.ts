@@ -21,7 +21,7 @@ export const getProducts = AsyncFunctions(async () => {
 
 export const addProduct = AsyncFunctions(async (productInfo: Items) => {
   const result = await query(
-    "insert into product (name, category, icon, description, qte, price) values ($1, $2, $3, $4, $5, $6) returning *",
+    "insert into product (name, category, icon, description, qte, price) values ($1, $2, $3, $4, $5, $6) returning id",
     [
       productInfo.name,
       productInfo.category,
@@ -33,7 +33,7 @@ export const addProduct = AsyncFunctions(async (productInfo: Items) => {
   );
 
   if (!result || !result?.rowCount) return false;
-  return true;
+  return result.rows[0];
 });
 
 export const getProductByName = AsyncFunctions(async (productName: string) => {

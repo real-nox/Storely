@@ -11,7 +11,7 @@ export const addProduct_s = AsyncFunctions(
         success: false,
         error: "An Error had happened! Could not add the product!",
       };
-    return { success: true, error: "" };
+    return { success: true, id: result, error: "" };
   },
 );
 

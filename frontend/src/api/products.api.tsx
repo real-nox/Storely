@@ -35,7 +35,7 @@ export const addProducts = async (product: Items) => {
     });
 
     const response = await result.json();
-    if (response) return true;
+    if (response) return response.id;
     return response?.error;
   } catch (err) {
     console.error(err);

@@ -33,6 +33,7 @@ export type CartItem = {
 };
 
 export type SetCartItem = Dispatch<SetStateAction<CartItem>>;
+export type SetProduct = Dispatch<SetStateAction<Items[]>>;
 export type SetAdminType = Dispatch<SetStateAction<actions>>;
 
 export default function Homepage({ Type }: { Type: Type }) {
@@ -83,7 +84,7 @@ export default function Homepage({ Type }: { Type: Type }) {
   };
   return (
     <>
-      {showPopUp && <PopUpProduct action={adminType} onClose={() => setShowPopUp(false)} />}
+      {showPopUp && <PopUpProduct action={adminType} onClose={() => setShowPopUp(false)} setProduct={setProduct}/>}
       <div className="home">
         <Header inCart={inCart} setinCart={setinCart} cartItems={cartItems} />
         {renderPage()}
