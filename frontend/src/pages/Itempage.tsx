@@ -1,22 +1,24 @@
 import { useNavigate, useParams } from "react-router";
-import { products } from "../testItems";
 import { ArrowLeft, Minus, Plus, ShoppingCart } from "lucide-react";
 import { useEffect, useState } from "react";
 import type { CartItem, SetCartItem } from "../Home";
+import type { Items } from "../components/Item";
 
 export default function Iteminfo({
   setCartItem,
+  products
 }: {
   setCartItem: SetCartItem;
+  products: Items[]
 }) {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const product = products.find((p) => p.id === id);
+  const product = products.find((p) => p.id == id);
 
   useEffect(() => {
-    if (!product) navigate("/404");
-  }, []);
+    if (products.length > 0 && !product) navigate("/404");
+  }, [products, product]);
 
   const [qte, setQte] = useState(1);
   return (

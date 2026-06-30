@@ -76,10 +76,10 @@ export default function Homepage({ Type }: { Type: Type }) {
     if (Type === "home")
       return <Home setCartItem={setCartItem} products={products} />;
     if (Type === "cart")
-      return <Cart cartItems={cartItems} setCartItem={setCartItem} />;
-    if (Type === "item") return <Iteminfo setCartItem={setCartItem} />;
+      return <Cart cartItems={cartItems} setCartItem={setCartItem} products={products} />;
+    if (Type === "item") return <Iteminfo setCartItem={setCartItem} products={products} />;
     if (Type === "notfound") return <NotFound />;
-    if (Type === "checkout") return <Checkout cartItems={cartItems} />;
+    if (Type === "checkout") return <Checkout cartItems={cartItems} products={products}/>;
     if (Type === "admin") return <Adminpage products={products} setAdminType={setAdminType} onOpen={() => setShowPopUp(true)}/>;
   };
   return (

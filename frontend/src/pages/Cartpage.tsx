@@ -1,15 +1,16 @@
 import { Minus, Plus, ShoppingBag, Trash2 } from "lucide-react";
 import type { CartItem, SetCartItem } from "../Home";
 import { useNavigate } from "react-router";
-import { products } from "../testItems";
 import type { Items } from "../components/Item";
 
 export default function Cart({
   cartItems,
   setCartItem,
+  products
 }: {
   cartItems: CartItem;
   setCartItem: SetCartItem;
+  products: Items[]
 }) {
   const navigate = useNavigate();
 

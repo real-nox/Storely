@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router";
 import type { Items } from "../components/Item";
 import type { CartItem } from "../Home";
-import { products } from "../testItems";
 import { useEffect, useState } from "react";
 
 interface InfoUser {
@@ -15,7 +14,7 @@ interface InfoUser {
   code: string;
 }
 
-export default function Checkout({ cartItems }: { cartItems: CartItem }) {
+export default function Checkout({ cartItems, products }: { cartItems: CartItem, products: Items[] }) {
   const [info, setInfo] = useState<InfoUser>({
     city: "",
     code: "",
