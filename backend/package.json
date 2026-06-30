@@ -16,12 +16,14 @@
     "express": "^5.2.1",
     "express-session": "^1.19.0",
     "jsonwebtoken": "^9.0.3",
+    "pg": "^8.22.0",
     "typescript": "^6.0.3"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/express-session": "^1.19.0",
-    "@types/node": "^26.0.0"
+    "@types/node": "^26.0.0",
+    "@types/pg": "^8.20.0"
   }
 }

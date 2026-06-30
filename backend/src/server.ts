@@ -3,6 +3,7 @@ import cors from "cors";
 import { config } from "dotenv";
 import clientR from "./routes/client.route.js";
 import adminR from "./routes/admin.route.js";
+import { InitDB } from "./database/initDB.js";
 
 config({ quiet: true });
 
@@ -20,6 +21,7 @@ api.use(
 api.use("/client", clientR);
 api.use("/admin", adminR);
 
-api.listen(5500, () => {
+api.listen(5500, async() => {
   console.log("[Server] Server is online");
+  await InitDB()
 });
