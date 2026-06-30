@@ -44,8 +44,20 @@ export default function Homepage({ Type }: { Type: Type }) {
     id_products: [],
   });
 
-  const [adminType, setAdminType] = useState<actions>("")
-  const [showPopUp, setShowPopUp] = useState<boolean>(false)
+  const [adminType, setAdminType] = useState<actions>({
+    product: {
+      category: "",
+      description: "",
+      icon: "",
+      id: "",
+      isPromo: false,
+      name: "",
+      price: 0,
+      qte: 0,
+    },
+    type: "",
+  });
+  const [showPopUp, setShowPopUp] = useState<boolean>(false);
 
   useEffect(() => {
     const getListProducts = async () => {
@@ -76,15 +88,36 @@ export default function Homepage({ Type }: { Type: Type }) {
     if (Type === "home")
       return <Home setCartItem={setCartItem} products={products} />;
     if (Type === "cart")
-      return <Cart cartItems={cartItems} setCartItem={setCartItem} products={products} />;
-    if (Type === "item") return <Iteminfo setCartItem={setCartItem} products={products} />;
+      return (
+        <Cart
+          cartItems={cartItems}
+          setCartItem={setCartItem}
+          products={products}
+        />
+      );
+    if (Type === "item")
+      return <Iteminfo setCartItem={setCartItem} products={products} />;
     if (Type === "notfound") return <NotFound />;
-    if (Type === "checkout") return <Checkout cartItems={cartItems} products={products}/>;
-    if (Type === "admin") return <Adminpage products={products} setAdminType={setAdminType} onOpen={() => setShowPopUp(true)}/>;
+    if (Type === "checkout")
+      return <Checkout cartItems={cartItems} products={products} />;
+    if (Type === "admin")
+      return (
+        <Adminpage
+          products={products}
+          setAdminType={setAdminType}
+          onOpen={() => setShowPopUp(true)}
+        />
+      );
   };
   return (
     <>
-      {showPopUp && <PopUpProduct action={adminType} onClose={() => setShowPopUp(false)} setProduct={setProduct}/>}
+      {showPopUp && (
+        <PopUpProduct
+          action={adminType}
+          onClose={() => setShowPopUp(false)}
+          setProduct={setProduct}
+        />
+      )}
       <div className="home">
         <Header inCart={inCart} setinCart={setinCart} cartItems={cartItems} />
         {renderPage()}

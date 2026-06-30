@@ -118,7 +118,15 @@
     justify-content: end;
 }
 
-.Card .actions button {
+.Card .actions button,
+.cancelD,
+.confirmD {
     font-size: 1em;
     border-radius: 10px;
+}
+
+.cancelD,
+.confirmD {
+    width: 40%;
+    padding: 0.25rem;
 }

@@ -37,11 +37,26 @@ export const addProduct = AsyncFunctions(async (productInfo: Items) => {
 });
 
 export const getProductByName = AsyncFunctions(async (productName: string) => {
-  const result = await query(
-    "select name from product where name = $1",
-    [productName],
-  );
+  const result = await query("select name from product where name = $1", [
+    productName,
+  ]);
 
-  if (result.rows.length === 0) return false
-  return true
+  if (result.rows.length === 0) return false;
+  return true;
+});
+
+export const getProductById = AsyncFunctions(async (productId: number) => {
+  const result = await query("select id from product where id = $1", [
+    productId,
+  ]);
+
+  if (result.rows.length === 0) return false;
+  return true;
+});
+
+export const delProductById = AsyncFunctions(async (productId: number) => {
+  const result = await query("delete from product where id = $1", [productId]);
+
+  if (result.rows.length === 0) return false;
+  return true;
 });

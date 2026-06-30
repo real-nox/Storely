@@ -19,7 +19,19 @@ export default function Adminpage({
           className="add border"
           onClick={() => {
             onOpen();
-            setAdminType("add");
+            setAdminType({
+              type: "add",
+              product: {
+                category: "",
+                description: "",
+                icon: "",
+                id: "",
+                isPromo: false,
+                name: "",
+                price: 0,
+                qte: 0,
+              },
+            });
           }}
         >
           <Plus /> Add Product
@@ -69,14 +81,14 @@ export default function Adminpage({
                         className="action"
                         onClick={() => {
                           onOpen();
-                          setAdminType("modify");
+                          setAdminType({ type: "modify", product: item });
                         }}
                       />
                       <Trash2
                         className="action"
                         onClick={() => {
                           onOpen();
-                          setAdminType("remove");
+                          setAdminType({ type: "remove", product: item });
                         }}
                       />
                     </div>

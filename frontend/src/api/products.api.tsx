@@ -58,3 +58,22 @@ export const getProductByName = async (productName: string) => {
     console.error(err);
   }
 };
+
+export const deleteProduct = async (id: number) => {
+  try {
+    const result = await fetch(`${BACKEND_URL}/admin/product`, {
+      method: "DELETE",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id }),
+    });
+
+    const response = await result.json();
+
+    console.log(response)
+    if (response?.success) return true;
+    return response?.error || "Fill in the form";
+  } catch (err) {
+    console.error(err);
+  }
+}
