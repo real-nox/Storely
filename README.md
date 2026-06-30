@@ -11,4 +11,10 @@ CREATE TABLE client (
   state text,
   zipcode text
 );
+
+
+CREATE TABLE category (
+  id integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY (sequence name "category_id_seq"),
+  name text NOT NULL UNIQUE
+);
 ```
