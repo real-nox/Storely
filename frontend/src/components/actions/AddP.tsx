@@ -132,7 +132,7 @@ export default function AddP({
             />
           </div>
           <div className="infoItem">
-            <label htmlFor="description">Description URL</label>
+            <label htmlFor="description">Description</label>
             <textarea
               name="imgURL"
               id="imgURL"
