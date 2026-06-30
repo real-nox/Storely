@@ -1,7 +1,7 @@
 import { Pen, Plus, Trash2 } from "lucide-react";
-import { products } from "../testItems";
+import type { Items } from "../components/Item";
 
-export default function Adminpage() {
+export default function Adminpage({ products }: { products: Items[] }) {
   return (
     <div className="Admin Center">
       <div className="top">

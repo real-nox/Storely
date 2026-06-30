@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { products } from "../testItems";
 import { Eye, ShoppingCart } from "lucide-react";
 import { useNavigate } from "react-router";
 import type { CartItem, SetCartItem } from "../Home";
@@ -28,21 +27,24 @@ export default function Item({
   category_name,
   filter,
   setCartItem,
+  products,
 }: {
   category_name: string;
   filter: string;
   setCartItem: SetCartItem;
+  products: Items[];
 }) {
   const [filteredItems, setFilteredItems] = useState(products);
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log(products)
     setFilteredItems(
       products.filter((item) =>
         item.name.toLowerCase().includes(filter.toLowerCase()),
       ),
     );
-  }, [filter]);
+  }, [filter, products]);
 
   return (
     <>
@@ -77,7 +79,7 @@ export default function Item({
                     onClick={(ev) => {
                       ev.stopPropagation();
                       setCartItem((prev: CartItem) => {
-                        const numericId = parseInt(id)
+                        const numericId = parseInt(id);
                         const current = prev.id_products.find(
                           (item) => item.id === numericId,
                         );
