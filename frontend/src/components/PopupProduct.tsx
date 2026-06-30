@@ -16,7 +16,7 @@ export default function PopUpProduct({
       case "":
         return null;
       case "add":
-        return <AddP />;
+        return <AddP onClick={onClose}/>;
       case "modify":
         return <ModifyP />;
       case "remove":
