@@ -62,7 +62,7 @@ export default function Homepage({ Type }: { Type: Type }) {
   useEffect(() => {
     const getListProducts = async () => {
       const result = await getProducts();
-      if (!result) return 
+      if (!result) return
       setProduct(result);
     };
     getListProducts();

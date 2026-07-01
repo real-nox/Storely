@@ -38,7 +38,7 @@ export default function Item({
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!products) return
+    if (!products) return;
     setFilteredItems(
       products.filter((item) =>
         item.name.toLowerCase().includes(filter.toLowerCase()),
@@ -48,69 +48,74 @@ export default function Item({
 
   return (
     <>
-      {products && filteredItems.map(
-        ({ id, category, description, name, price, icon }: Items) => {
-          return (
-            (category_name === "All" ||
-              (category_name !== "All" && category_name === category)) && (
-              <div
-                className="ItemCard border"
-                key={id}
-                onClick={() => navigate(`/${id}`)}
-              >
-                <div className="icon border">
-                  <img src={icon} alt="" />
-                </div>
-                <div className="infop">
-                  <span className="categoryI border">{category}</span>
-                  <span className="nameI">{name}</span>
-                  <span className="descI">{description}</span>
-                  <span className="priceI">{price} MAD</span>
-                </div>
-                <div className="actions">
-                  <button
-                    className="view border"
-                    onClick={() => navigate(`/${id}`)}
-                  >
-                    <Eye /> View
-                  </button>
-                  <button
-                    className="add border"
-                    onClick={(ev) => {
-                      ev.stopPropagation();
-                      setCartItem((prev: CartItem) => {
-                        const numericId = parseInt(id);
-                        const current = prev.id_products.find(
-                          (item) => item.id === numericId,
-                        );
+      {products &&
+        filteredItems.map(
+          ({ id, category, description, name, price, icon }: Items) => {
+            return (
+              (category_name === "All" ||
+                (category_name !== "All" && category_name === category)) && (
+                <div
+                  className="ItemCard border"
+                  key={id}
+                  onClick={() => navigate(`/${id}`)}
+                >
+                  <div className="icon border">
+                    {icon === "" ? (
+                      <img alt="There was an icon here" />
+                    ) : (
+                      <img src={icon} alt="" />
+                    )}
+                  </div>
+                  <div className="infop">
+                    <span className="categoryI border">{category}</span>
+                    <span className="nameI">{name}</span>
+                    <span className="descI">{description}</span>
+                    <span className="priceI">{price} MAD</span>
+                  </div>
+                  <div className="actions">
+                    <button
+                      className="view border"
+                      onClick={() => navigate(`/${id}`)}
+                    >
+                      <Eye /> View
+                    </button>
+                    <button
+                      className="add border"
+                      onClick={(ev) => {
+                        ev.stopPropagation();
+                        setCartItem((prev: CartItem) => {
+                          const numericId = parseInt(id);
+                          const current = prev.id_products.find(
+                            (item) => item.id === numericId,
+                          );
 
-                        if (current)
+                          if (current)
+                            return {
+                              ...prev,
+                              id_products: prev.id_products.map((item) =>
+                                item.id === numericId
+                                  ? { ...item, qte: item.qte + 1 }
+                                  : item,
+                              ),
+                            };
                           return {
                             ...prev,
-                            id_products: prev.id_products.map((item) =>
-                              item.id === numericId
-                                ? { ...item, qte: item.qte + 1 }
-                                : item,
-                            ),
+                            id_products: [
+                              ...prev.id_products,
+                              { id: numericId, qte: 1 },
+                            ],
                           };
-                        return {
-                          ...prev,
-                          id_products: [
-                            ...prev.id_products,
-                            { id: numericId, qte: 1 },
-                          ],
-                        };
-                      });
-                    }}
-                  >
-                    <ShoppingCart /> Add
-                  </button>
+                        });
+                      }}
+                    >
+                      <ShoppingCart /> Add
+                    </button>
+                  </div>
                 </div>
-              </div>
-            )
-          );
-        },
-      )}
+              )
+            );
+          },
+        )}
     </>
   );
 }

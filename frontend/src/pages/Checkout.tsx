@@ -2,20 +2,10 @@ import { useNavigate } from "react-router";
 import type { Items } from "../components/Item";
 import type { CartItem } from "../Home";
 import { useEffect, useState } from "react";
-
-interface InfoUser {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  street: string;
-  city: string;
-  state: string;
-  code: string;
-}
+import type { Command } from "../api/commands.api";
 
 export default function Checkout({ cartItems, products }: { cartItems: CartItem, products: Items[] }) {
-  const [info, setInfo] = useState<InfoUser>({
+  const [info, setInfo] = useState<Command>({
     city: "",
     code: "",
     email: "",
@@ -24,6 +14,10 @@ export default function Checkout({ cartItems, products }: { cartItems: CartItem,
     phone: "",
     state: "",
     street: "",
+    productId: [{
+      id: 0,
+      qte: 0
+    }]
   });
 
   const navigate = useNavigate();
@@ -53,7 +47,7 @@ export default function Checkout({ cartItems, products }: { cartItems: CartItem,
     !!info.state &&
     !!info.street;
 
-  const fill = (part: keyof InfoUser, info: string) => {
+  const fill = (part: keyof Command, info: string) => {
     setInfo((prev) => ({
       ...prev,
       [part]: info,
@@ -61,6 +55,7 @@ export default function Checkout({ cartItems, products }: { cartItems: CartItem,
   };
 
   const submitCheckout = () => {
+    info.productId = cartItems.id_products
     console.log(info)
   }
   return (

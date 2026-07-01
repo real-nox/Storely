@@ -31,7 +31,13 @@ export default function Iteminfo({
       <div className="info">
         <div className="left">
           <div className="icon border">
-            <img src={product?.icon} alt="" />
+            {
+              product?.icon && product?.icon === "" ? (
+                <img alt="There was an icon here" />
+              ) : (
+                <img src={product?.icon} alt="" />
+              )
+            }
           </div>
         </div>
         <div className="right">
