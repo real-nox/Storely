@@ -27,4 +27,11 @@ CREATE TABLE product (
   qte integer NOT NULL,
   isPromo boolean DEFAULT false NOT NULL
 );
+
+CREATE TABLE command (
+  id integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY (sequence name "command_id_seq"),
+  client_id integer NOT NULL,
+  product_id integer NOT NULL,
+  qte numeric NOT NULL
+);
 ```
