@@ -38,7 +38,7 @@ export default function Item({
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(products)
+    if (!products) return
     setFilteredItems(
       products.filter((item) =>
         item.name.toLowerCase().includes(filter.toLowerCase()),
@@ -48,7 +48,7 @@ export default function Item({
 
   return (
     <>
-      {filteredItems.map(
+      {products && filteredItems.map(
         ({ id, category, description, name, price, icon }: Items) => {
           return (
             (category_name === "All" ||

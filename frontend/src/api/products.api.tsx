@@ -16,9 +16,9 @@ export const getProducts = async () => {
       credentials: "include",
     });
 
+    if (!result.ok) return null;
     const response = await result.json();
     if (!response?.success) return response?.error;
-    console.log(response);
     return response?.list;
   } catch (err) {
     console.error(err);
@@ -70,10 +70,10 @@ export const deleteProduct = async (id: number) => {
 
     const response = await result.json();
 
-    console.log(response)
+    console.log(response);
     if (response?.success) return true;
     return response?.error || "Fill in the form";
   } catch (err) {
     console.error(err);
   }
-}
+};
